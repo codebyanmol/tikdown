@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Video Downloader - Save Videos Without Watermark</title>
-    <meta name="description" content="Download high-quality TikTok videos without watermark. Save videos in HD, extract photos from posts, and enjoy fast, free downloads.">
+    <title>TikTok Video Downloader - No Watermark</title>
+    <meta name="description" content="Download TikTok videos without watermark directly from your browser. No API needed. Fast and free!">
     <style>
         :root {
             --primary-color: #25F4EE;
@@ -182,6 +182,8 @@
             display: none;
             width: 100%;
             margin-bottom: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .photo-thumbnail {
@@ -357,6 +359,27 @@
             color: white;
         }
         
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         @media (max-width: 768px) {
             .logo-text {
                 font-size: 2rem;
@@ -405,10 +428,10 @@
     <div class="container">
         <header>
             <div class="logo-container">
-                <img src="https://via.placeholder.com/50x50/25F4EE/FE2C55?text=TD" alt="TikDown Logo" class="logo-img">
+                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cGF0aCBmaWxsPSIjRkUyQzU1IiBkPSJNNDQ4IDI1NkMwIDI1NiAwIDI1NiAwIDI1NnMzNTIgMzIgNDQ4IDMyYzAgMTE3LjctOTUuNyAyMTItMjEzLjMgMjEyQzExNy43IDUwMCAyNCA0MDUuNyAyNCAyODhTMTE3LjcgNzYgMjM0LjcgNzZDMzMyIDc2IDQ0OCAxODQgNDQ4IDI1NloiLz48cGF0aCBmaWxsPSIjMjVGNEVFIiBkPSJNMjU2IDI1NmMwIDYxLjktNTAuMSAxMTItMTEyIDExMlMzMiAzMTcuOSAzMiAyNTZzNTAuMS0xMTIgMTEyLTExMnMxMTIgNTAuMSAxMTIgMTEyWiIvPjxwYXRoIGZpbGw9IiNGRUZGRkYiIGQ9Ik0yNzIgMTYwYzAgMTcuNy0xNC4zIDMyLTMyIDMycy0zMi0xNC4zLTMyLTMyaC0zMmMwIDM1LjMgMjguNyA2NCA2NCA2NHM2NC0yOC43IDY0LTY0aC0zMloiLz48L3N2Zz4=" alt="TikDown Logo" class="logo-img">
                 <div class="logo-text">TikDown</div>
             </div>
-            <div class="tagline">Download TikTok videos without watermark in HD quality. Save videos and photos with one click!</div>
+            <div class="tagline">Download TikTok videos without watermark directly in your browser. No API needed!</div>
         </header>
         
         <main>
@@ -442,6 +465,11 @@
                         <div class="option-title">Contact Us</div>
                         <div class="option-desc">Need help? Reach out to our team</div>
                     </div>
+                </div>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Fetching video information...</p>
                 </div>
                 
                 <div class="result" id="result">
@@ -479,45 +507,41 @@
             <div class="about-section">
                 <h2 class="section-title">About TikDown</h2>
                 <div class="about-content">
-                    <p>Welcome to TikDown, the most advanced TikTok video downloader on the web! Our mission is to provide a simple, fast, and reliable way to save your favorite TikTok content without any watermarks or quality loss.</p>
+                    <p>Welcome to TikDown, the most advanced TikTok video downloader that works entirely in your browser! Our client-side solution means your data never leaves your device, ensuring complete privacy while downloading your favorite TikTok videos.</p>
                     
                     <p>With millions of users worldwide, TikDown has become the go-to solution for content creators, marketers, and TikTok enthusiasts who want to save videos for offline viewing, content inspiration, or creative projects. Our platform works seamlessly on all devices, from smartphones to desktop computers.</p>
                     
-                    <p>Unlike other downloaders, TikDown preserves the original video quality and gives you multiple download options. Whether you need standard definition for quick sharing or HD quality for professional use, we've got you covered.</p>
-                    
-                    <h3 style="margin: 20px 0 10px; color: var(--secondary-color);">Why Choose TikDown?</h3>
+                    <h3 style="margin: 20px 0 10px; color: var(--secondary-color);">How It Works</h3>
+                    <ol style="margin-left: 20px; margin-bottom: 15px;">
+                        <li>Paste your TikTok video URL in the input field</li>
+                        <li>Click "Fetch Video" to extract the content</li>
+                        <li>Preview the video directly in your browser</li>
+                        <li>Download without watermark in your preferred quality</li>
+                    </ol>
                     
                     <div class="features">
                         <div class="feature-card">
                             <div class="feature-title">
-                                <span class="feature-icon">⚡</span>
-                                <span>Lightning Fast</span>
+                                <span class="feature-icon">🔒</span>
+                                <span>100% Private</span>
                             </div>
-                            <p>Download videos in seconds with our optimized servers and advanced technology.</p>
+                            <p>No server processing means your TikTok URLs never leave your device.</p>
                         </div>
                         
                         <div class="feature-card">
                             <div class="feature-title">
-                                <span class="feature-icon">🔒</span>
-                                <span>100% Safe</span>
+                                <span class="feature-icon">⚡</span>
+                                <span>No Watermark</span>
                             </div>
-                            <p>No registration required. We don't store your data or downloaded content.</p>
+                            <p>Get clean videos without the TikTok watermark for professional use.</p>
                         </div>
                         
                         <div class="feature-card">
                             <div class="feature-title">
                                 <span class="feature-icon">💎</span>
-                                <span>Premium Quality</span>
+                                <span>HD Quality</span>
                             </div>
-                            <p>Get the highest possible quality with no watermarks or compression artifacts.</p>
-                        </div>
-                        
-                        <div class="feature-card">
-                            <div class="feature-title">
-                                <span class="feature-icon">📸</span>
-                                <span>Photo Support</span>
-                            </div>
-                            <p>Download individual photos or entire albums from TikTok photo posts.</p>
+                            <p>Download videos in the highest available quality up to 1080p.</p>
                         </div>
                     </div>
                 </div>
@@ -536,8 +560,6 @@
                 <a href="#" class="footer-link">Privacy Policy</a>
                 <a href="#" class="footer-link">DMCA</a>
                 <a href="#" class="footer-link">Contact Us</a>
-                <a href="#" class="footer-link">Blog</a>
-                <a href="#" class="footer-link">FAQ</a>
             </div>
             <div>© 2023 TikDown. All rights reserved. TikTok is a registered trademark of ByteDance Ltd.</div>
         </footer>
@@ -548,6 +570,7 @@
             const fetchBtn = document.getElementById('fetch-btn');
             const videoUrlInput = document.getElementById('video-url');
             const resultDiv = document.getElementById('result');
+            const loadingDiv = document.getElementById('loading');
             const videoPreview = document.getElementById('video-preview');
             const photoPreview = document.getElementById('photo-preview');
             const photoGallery = document.getElementById('photo-gallery');
@@ -587,168 +610,199 @@
             
             appDownload.addEventListener('click', function() {
                 alert('Redirecting to app download page...');
-                // In a real implementation, this would redirect to app store
                 window.location.href = '#';
             });
             
             contactUs.addEventListener('click', function() {
                 alert('Contact us at support@tikdown.com');
-                // In a real implementation, this would open a contact form
             });
             
-            function fetchVideo(quality = 'normal') {
+            async function fetchVideo(quality = 'normal') {
                 const url = videoUrlInput.value.trim();
                 
                 if (!url) {
                     alert('Please enter a TikTok video URL');
                     return;
                 }
-                
-                // Validate TikTok URL (simplified validation)
-                if (!url.includes('tiktok.com')) {
+
+                // Validate TikTok URL
+                if (!isValidTikTokUrl(url)) {
                     alert('Please enter a valid TikTok video URL');
                     return;
                 }
-                
+
                 // Show loading state
-                fetchBtn.textContent = 'Fetching...';
                 fetchBtn.disabled = true;
-                
-                // Simulate API call (in a real app, this would call your backend)
-                setTimeout(() => {
-                    // This is a simulation - a real implementation would call your backend API
-                    // which would then call the TikTok API or use a scraping service
-                    
-                    // For demo purposes, we'll simulate both video and photo responses
-                    const isPhotoPost = Math.random() > 0.7; // 30% chance of being a photo post
-                    
-                    // Show result section
-                    resultDiv.style.display = 'block';
-                    
-                    if (isPhotoPost) {
-                        // Handle photo post
-                        handlePhotoPost(quality);
-                    } else {
-                        // Handle video post
-                        handleVideoPost(quality);
+                fetchBtn.textContent = 'Fetching...';
+                loadingDiv.style.display = 'block';
+                resultDiv.style.display = 'none';
+                videoInfo.style.display = 'none';
+
+                try {
+                    // Extract video ID from URL
+                    const videoId = extractVideoId(url);
+                    if (!videoId) {
+                        throw new Error('Could not extract video ID from URL');
                     }
+
+                    // In a real implementation, you would use the videoId to fetch the video
+                    // For this demo, we'll simulate finding a video URL
+                    const videoData = await simulateTikTokFetch(videoId, quality);
                     
-                    // Set mock video info
-                    videoCaption.textContent = "Check out this amazing TikTok video! #viral #trending";
-                    videoAuthor.textContent = "@tiktokuser • 1.5M followers";
-                    videoDate.textContent = "2 days ago";
-                    videoLikes.textContent = "1,234,567";
+                    // Display the results
+                    displayResults(videoData, quality);
                     
-                    // Reset button
-                    fetchBtn.textContent = 'Fetch Video';
+                } catch (error) {
+                    console.error('Error:', error);
+                    alert('Failed to fetch video. Please try again or use a different URL.');
+                } finally {
                     fetchBtn.disabled = false;
-                    
-                    // Scroll to result
+                    fetchBtn.textContent = 'Fetch Video';
+                    loadingDiv.style.display = 'none';
+                    resultDiv.style.display = 'block';
                     resultDiv.scrollIntoView({ behavior: 'smooth' });
-                }, 1500);
+                }
             }
-            
-            function handleVideoPost(quality) {
-                // Hide photo elements
+
+            function isValidTikTokUrl(url) {
+                return /tiktok\.com/.test(url) && /video/.test(url);
+            }
+
+            function extractVideoId(url) {
+                // Extract video ID from various TikTok URL formats
+                const matches = url.match(/(?:video\/|v=)(\d+)/);
+                return matches ? matches[1] : null;
+            }
+
+            async function simulateTikTokFetch(videoId, quality) {
+                // Simulate network delay
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                // This is where you would normally make an API call
+                // For this demo, we'll return mock data with working video URLs
+                return {
+                    success: true,
+                    type: 'video', // or 'photo' to test photo posts
+                    videoUrl: getRandomVideoUrl(quality),
+                    thumbnail: 'https://i.ytimg.com/vi/YE7VzlLtp-4/maxresdefault.jpg',
+                    caption: "Check out this amazing TikTok video! #viral #trending",
+                    author: "@tiktokuser • 1.5M followers",
+                    date: "2 days ago",
+                    likes: "1,234,567",
+                    photos: [
+                        'https://picsum.photos/800/1200?random=1',
+                        'https://picsum.photos/800/1200?random=2',
+                        'https://picsum.photos/800/1200?random=3'
+                    ]
+                };
+            }
+
+            function getRandomVideoUrl(quality) {
+                // Return different video URLs based on quality for demo purposes
+                const videos = {
+                    normal: [
+                        'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4',
+                        'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_2mb.mp4'
+                    ],
+                    hd: [
+                        'https://sample-videos.com/video123/mp4/1080/big_buck_bunny_1080p_5mb.mp4',
+                        'https://sample-videos.com/video123/mp4/1080/big_buck_bunny_1080p_10mb.mp4'
+                    ]
+                };
+                
+                const qualityVideos = videos[quality] || videos.normal;
+                return qualityVideos[Math.floor(Math.random() * qualityVideos.length)];
+            }
+
+            function displayResults(data, quality) {
+                // Show video info
+                videoCaption.textContent = data.caption;
+                videoAuthor.textContent = data.author;
+                videoDate.textContent = data.date;
+                videoLikes.textContent = data.likes;
+                videoInfo.style.display = 'block';
+
+                if (data.type === 'video') {
+                    handleVideoPost(quality, data);
+                } else {
+                    handlePhotoPost(quality, data);
+                }
+            }
+
+            function handleVideoPost(quality, data) {
                 photoPreview.style.display = 'none';
                 photoGallery.style.display = 'none';
                 
-                // Show video element
                 videoPreview.style.display = 'block';
-                videoPreview.poster = 'https://via.placeholder.com/500x900/25F4EE/FFFFFF?text=Video+Preview';
-                videoPreview.src = '';
+                videoPreview.poster = data.thumbnail;
+                videoPreview.src = data.videoUrl;
                 
-                // Set download options
-                downloadOptions.innerHTML = '';
-                
-                if (quality === 'hd') {
-                    downloadOptions.innerHTML = `
-                        <a href="#" class="download-btn" id="hd-download-btn">Download HD Video (1080p)</a>
-                        <a href="#" class="download-btn secondary" id="sd-download-btn">Download Standard Video (720p)</a>
-                    `;
-                } else {
-                    downloadOptions.innerHTML = `
-                        <a href="#" class="download-btn" id="sd-download-btn">Download Standard Video (720p)</a>
-                        <a href="#" class="download-btn secondary" id="hd-download-btn">Download HD Video (1080p)</a>
-                    `;
-                }
-                
-                // Add event listeners to download buttons
-                document.getElementById('hd-download-btn').addEventListener('click', function(e) {
+                downloadOptions.innerHTML = `
+                    <a href="${data.videoUrl}" download="tiktok-video-${quality}.mp4" class="download-btn">
+                        Download ${quality === 'hd' ? 'HD' : 'Standard'} Video
+                    </a>
+                    <a href="#" class="download-btn secondary" id="download-hd-btn">
+                        ${quality === 'hd' ? 'Download Standard Quality' : 'Download HD Quality'}
+                    </a>
+                `;
+
+                document.getElementById('download-hd-btn').addEventListener('click', function(e) {
                     e.preventDefault();
-                    alert('Starting HD video download...');
-                    // In real implementation, this would trigger download
-                });
-                
-                document.getElementById('sd-download-btn').addEventListener('click', function(e) {
-                    e.preventDefault();
-                    alert('Starting standard video download...');
-                    // In real implementation, this would trigger download
+                    // In a real app, this would fetch the alternative quality
+                    alert('This would fetch the ' + (quality === 'hd' ? 'standard' : 'HD') + ' quality version');
                 });
             }
-            
-            function handlePhotoPost(quality) {
-                // Hide video element
+
+            function handlePhotoPost(quality, data) {
                 videoPreview.style.display = 'none';
-                
-                // Show photo elements
                 photoPreview.style.display = 'block';
                 photoGallery.style.display = 'flex';
-                
-                // Set mock photo data (simulating an album with 3 photos)
-                const photoUrls = [
-                    'https://via.placeholder.com/500x900/FE2C55/FFFFFF?text=Photo+1',
-                    'https://via.placeholder.com/500x900/25F4EE/FFFFFF?text=Photo+2',
-                    'https://via.placeholder.com/500x900/010101/FFFFFF?text=Photo+3'
-                ];
-                
-                // Set main preview to first photo
-                photoPreview.src = photoUrls[0];
-                
-                // Create gallery thumbnails
                 photoGallery.innerHTML = '';
-                photoUrls.forEach((url, index) => {
+
+                // Set first photo as main preview
+                photoPreview.src = data.photos[0];
+
+                // Create thumbnails
+                data.photos.forEach((photo, index) => {
                     const img = document.createElement('img');
-                    img.src = url;
+                    img.src = photo;
                     img.className = 'photo-thumbnail';
                     img.alt = `Photo ${index + 1}`;
-                    img.addEventListener('click', function() {
-                        photoPreview.src = url;
+                    img.addEventListener('click', () => {
+                        photoPreview.src = photo;
                     });
                     photoGallery.appendChild(img);
                 });
-                
+
                 // Set download options
-                downloadOptions.innerHTML = '';
-                
-                if (photoUrls.length > 1) {
+                if (data.photos.length > 1) {
                     downloadOptions.innerHTML = `
-                        <a href="#" class="download-btn" id="download-all-photos">Download All Photos (ZIP)</a>
-                        <a href="#" class="download-btn secondary" id="download-current-photo">Download Current Photo</a>
+                        <a href="${data.photos[0]}" download="tiktok-photo-1.jpg" class="download-btn">
+                            Download Current Photo
+                        </a>
+                        <button class="download-btn secondary" id="download-all-btn">
+                            Download All Photos (${data.photos.length})
+                        </button>
                     `;
-                    
-                    // Add download all photos button
-                    document.getElementById('download-all-photos').addEventListener('click', function(e) {
+
+                    document.getElementById('download-all-btn').addEventListener('click', function(e) {
                         e.preventDefault();
-                        alert('Preparing ZIP file with all photos...');
-                        // In real implementation, this would create a ZIP download
-                    });
-                    
-                    // Add download current photo button
-                    document.getElementById('download-current-photo').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        alert(`Downloading photo ${photoPreview.src.split('+').pop()}...`);
-                        // In real implementation, this would download the current photo
+                        // Download each photo individually
+                        data.photos.forEach((photo, index) => {
+                            const link = document.createElement('a');
+                            link.href = photo;
+                            link.download = `tiktok-photo-${index + 1}.jpg`;
+                            document.body.appendChild(link);
+                            link.click();
+                            document.body.removeChild(link);
+                        });
                     });
                 } else {
                     downloadOptions.innerHTML = `
-                        <a href="#" class="download-btn" id="download-current-photo">Download Photo</a>
+                        <a href="${data.photos[0]}" download="tiktok-photo.jpg" class="download-btn">
+                            Download Photo
+                        </a>
                     `;
-                    
-                    document.getElementById('download-current-photo').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        alert('Downloading photo...');
-                    });
                 }
             }
         });
